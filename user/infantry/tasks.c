@@ -41,7 +41,7 @@ void Task_Control(void *Parameters) {
                 SwingMode = 3;
             }
 			else if (keyboardData.V) {
-                SwingMode = 0;
+                SwingMode = 7;
             }
             // 高射速模式
             FastShootMode = keyboardData.E;
@@ -525,7 +525,7 @@ void Task_Fire_Stir(void *Parameters) {
 
     // PID 初始化
     PID_Init(&PID_StirAngle, 10, 0, 0, 18000, 6000);  // 拨弹轮角度环
-    PID_Init(&PID_StirSpeed, 20, 0, 0.3, 20000, 1000); // 拨弹轮速度环
+    PID_Init(&PID_StirSpeed, 40, 0, 0.3, 20000, 1000); // 拨弹轮速度环
 
     // 开启激光
     // LASER_ON;
