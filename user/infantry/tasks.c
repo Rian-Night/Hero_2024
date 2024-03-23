@@ -18,6 +18,7 @@ void Task_Control(void *Parameters) {
             MagzineOpened = LEFT_SWITCH_MIDDLE && RIGHT_SWITCH_TOP;
             FrictEnabled  = 0;
             StirEnabled   = LEFT_SWITCH_BOTTOM && RIGHT_SWITCH_TOP;
+						StirReloadEnabled = LEFT_SWITCH_MIDDLE && RIGHT_SWITCH_MIDDLE;
             // unused
             // FastShootMode = StirEnabled;
             // PsShootEnabled = 0;
@@ -28,6 +29,7 @@ void Task_Control(void *Parameters) {
             PsShootEnabled = 0;
             StirEnabled    = mouseData.pressLeft;
             PsAimEnabled   = mouseData.pressRight;
+						StirReloadEnabled = keyboardData.R;
             //摩擦轮
             if (keyboardData.Z) {
                 FrictEnabled = 0;
@@ -511,7 +513,7 @@ void Task_Fire_Stir(void *Parameters) {
     int        intervalms   = interval * 1000;     // 任务运行间隔 ms
 
     // 射击模式
-    enum shootMode_e { shootIdle = 0, shootToDeath }; // 停止, 连发
+    enum shootMode_e { shootIdle = 0, shootToDeath = 1, shootReload = -1 }; // 停止, 连发
     enum shootMode_e shootMode = shootIdle;
 
     // 热量控制
@@ -567,8 +569,10 @@ void Task_Fire_Stir(void *Parameters) {
 
         // 输入射击模式
         shootMode = shootIdle;
-
-        if (StirEnabled) {
+				if (StirReloadEnabled) {
+					shootMode = shootReload;
+				}
+        else if (StirEnabled) {
             shootMode = shootToDeath;
         }
         // 视觉辅助
@@ -591,7 +595,16 @@ void Task_Fire_Stir(void *Parameters) {
 //            PID_Calculate(&PID_FireR, targetSpeed, Motor_FR.speed);	
 //					  Motor_FL.input = PID_FireL.output;
 //            Motor_FR.input = PID_FireR.output;
-        } else if (shootMode == shootToDeath) {
+        }else if (shootMode == shootReload) {
+					PID_Calculate(&PID_StirSpeed, 100, Motor_Stir.speed * RPM2RPS);
+					Motor_Stir.input = PID_StirSpeed.output;
+					if (
+						Motor_Stir.lastPosition == Motor_Stir.position)
+					{
+						shootMode = shootIdle;
+					}
+				}					
+				else if (shootMode == shootToDeath) {
             // 连发
             PID_Calculate(&PID_StirSpeed, stirSpeed, Motor_Stir.speed * RPM2RPS);
             Motor_Stir.input = PID_StirSpeed.output;
