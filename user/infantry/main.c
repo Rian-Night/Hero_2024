@@ -66,7 +66,7 @@ int main(void) {
     BSP_PWM_Init(&PWM_Magazine_Servo, 9000, 200, TIM_OCPolarity_Low);
 
     // Calibration
-        Motor_Set_Angle_Bias(&Motor_Yaw, 36.840);
+        Motor_Set_Angle_Bias(&Motor_Yaw, 265.840);
         Motor_Set_Angle_Bias(&Motor_Pitch, -145.764); //350.652 -145.764
         Gyroscope_Set_Bias(&ImuData, 20, 22, -1);
 
@@ -117,7 +117,7 @@ int main(void) {
     Bridge_Send_Protocol(&Node_Host, 0x120, 1);  // 心跳包
     Bridge_Send_Protocol(&Node_Host, 0x403, 20); // 陀螺仪
     Bridge_Send_Protocol(&Node_Host, 0x404, 10); // 遥控器
-      Bridge_Send_Protocol(&Node_Judge, 0XF101, 10); // 遥控器
+    Bridge_Send_Protocol(&Node_Judge, 0XF101, 10); // 遥控器
 
     //启动调度,开始执行任务
     vTaskStartScheduler();

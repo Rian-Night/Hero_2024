@@ -22,218 +22,23 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 D:\download\Hero_2024\mdk\infantry.uvprojx
-Project File Date:  02/28/2024
+Project File Date:  03/13/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 Note: source file '..\user\infantry\tasks.c' - object file renamed from '.\Objects\tasks.o' to '.\Objects\tasks_1.o'.
+compiling Driver_Magic.c...
+compiling main.c...
+compiling Driver_Bridge.c...
+compiling Driver_Protocol.c...
+compiling interrupt.c...
+compiling Driver_Chassis.c...
 compiling tasks.c...
-..\user\common\default_config.h(31): warning:  #1-D: last line of file ends without a newline
-  #define DMA_BUFFER_LENGTH 128 // DMA????€?????????????
-..\user\infantry\config.h(24): warning:  #47-D: incompatible redefinition of macro "CHASSIS_SIZE_K"  (declared at line 27 of "..\user\common\default_config.h")
-  #define CHASSIS_SIZE_K 0.402f               // 0.385???????€?, ?????????????????????XY?????????????????????
-..\user\infantry\config.h(38): warning:  #47-D: incompatible redefinition of macro "BOARD_FRONT_IS_UP"  (declared at line 15 of "..\user\common\default_config.h")
-  #define BOARD_FRONT_IS_UP 0                     // ??????????????????
-..\user\infantry\config.h(39): warning:  #47-D: incompatible redefinition of macro "BOARD_SHORT_SIDE_IS_PARALLEL_TO_PITCH"  (declared at line 16 of "..\user\common\default_config.h")
-  #define BOARD_SHORT_SIDE_IS_PARALLEL_TO_PITCH 0 // ??????????????????
-..\user\infantry\config.h(41): warning:  #47-D: incompatible redefinition of macro "GYROSCOPE_YAW_FILTER_THRESHOLD"  (declared at line 19 of "..\user\common\default_config.h")
-  #define GYROSCOPE_YAW_FILTER_THRESHOLD 0.005f // 0.005????????????????€?
-..\user\common\macro.h(77): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\user\common\default_config.h(15): warning:  #47-D: incompatible redefinition of macro "BOARD_FRONT_IS_UP"  (declared at line 38 of "..\user\infantry\config.h")
-  #define BOARD_FRONT_IS_UP 1                     // ??????????????????
-..\user\common\default_config.h(16): warning:  #47-D: incompatible redefinition of macro "BOARD_SHORT_SIDE_IS_PARALLEL_TO_PITCH"  (declared at line 39 of "..\user\infantry\config.h")
-  #define BOARD_SHORT_SIDE_IS_PARALLEL_TO_PITCH 1 // ??????????????????
-..\user\common\default_config.h(19): warning:  #47-D: incompatible redefinition of macro "GYROSCOPE_YAW_FILTER_THRESHOLD"  (declared at line 41 of "..\user\infantry\config.h")
-  #define GYROSCOPE_YAW_FILTER_THRESHOLD 0.003f   // ????????????????€?
-..\user\common\default_config.h(27): warning:  #47-D: incompatible redefinition of macro "CHASSIS_SIZE_K"  (declared at line 24 of "..\user\infantry\config.h")
-  #define CHASSIS_SIZE_K 0.385f               // ???????€?, ?????????????????????XY?????????????????????
-..\user\common\default_config.h(31): warning:  #1-D: last line of file ends without a newline
-  #define DMA_BUFFER_LENGTH 128 // DMA????€?????????????
-..\user\infantry\config.h(24): warning:  #47-D: incompatible redefinition of macro "CHASSIS_SIZE_K"  (declared at line 27 of "..\user\common\default_config.h")
-  #define CHASSIS_SIZE_K 0.402f               // 0.385???????€?, ?????????????????????XY?????????????????????
-..\user\infantry\config.h(38): warning:  #47-D: incompatible redefinition of macro "BOARD_FRONT_IS_UP"  (declared at line 15 of "..\user\common\default_config.h")
-  #define BOARD_FRONT_IS_UP 0                     // ??????????????????
-..\user\infantry\config.h(39): warning:  #47-D: incompatible redefinition of macro "BOARD_SHORT_SIDE_IS_PARALLEL_TO_PITCH"  (declared at line 16 of "..\user\common\default_config.h")
-  #define BOARD_SHORT_SIDE_IS_PARALLEL_TO_PITCH 0 // ??????????????????
-..\user\infantry\config.h(41): warning:  #47-D: incompatible redefinition of macro "GYROSCOPE_YAW_FILTER_THRESHOLD"  (declared at line 19 of "..\user\common\default_config.h")
-  #define GYROSCOPE_YAW_FILTER_THRESHOLD 0.005f // 0.005????????????????€?
-..\driver\inc\Driver_BSP.h(149): warning:  #1295-D: Deprecated declaration LED_Cancel_Warning - give arg types
-  void LED_Cancel_Warning();
-..\driver\inc\Driver_BSP.h(150): warning:  #1295-D: Deprecated declaration LED_Task_Warning - give arg types
-  void LED_Task_Warning();
-..\driver\inc\Driver_BSP.h(154): warning:  #1295-D: Deprecated declaration LED_Run_Horse - give arg types
-  void LED_Run_Horse();
-..\driver\inc\Driver_BSP.h(155): warning:  #1295-D: Deprecated declaration LED_Run_Horse_XP - give arg types
-  void LED_Run_Horse_XP();
-..\driver\inc\Driver_BSP.h(156): warning:  #1295-D: Deprecated declaration LED_Run_Rainbow_Ball - give arg types
-  void LED_Run_Rainbow_Ball();
-..\driver\inc\Driver_Gyroscope.h(65): warning:  #77-D: this declaration has no storage class or type specifier
-  Gyroscope_Update(GyroscopeData_Type *GyroscopeData);
-..\user\protocol.h(336): warning:  #1366-D: this anonymous union/struct field is hidden by field "data"  (declared at line 333)
-          uint8_t data[51];
-..\user\protocol.h(527): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\user\common\default_config.h(15): warning:  #47-D: incompatible redefinition of macro "BOARD_FRONT_IS_UP"  (declared at line 38 of "..\user\infantry\config.h")
-  #define BOARD_FRONT_IS_UP 1                     // ??????????????????
-..\user\common\default_config.h(16): warning:  #47-D: incompatible redefinition of macro "BOARD_SHORT_SIDE_IS_PARALLEL_TO_PITCH"  (declared at line 39 of "..\user\infantry\config.h")
-  #define BOARD_SHORT_SIDE_IS_PARALLEL_TO_PITCH 1 // ??????????????????
-..\user\common\default_config.h(19): warning:  #47-D: incompatible redefinition of macro "GYROSCOPE_YAW_FILTER_THRESHOLD"  (declared at line 41 of "..\user\infantry\config.h")
-  #define GYROSCOPE_YAW_FILTER_THRESHOLD 0.003f   // ????????????????€?
-..\user\common\default_config.h(27): warning:  #47-D: incompatible redefinition of macro "CHASSIS_SIZE_K"  (declared at line 24 of "..\user\infantry\config.h")
-  #define CHASSIS_SIZE_K 0.385f               // ???????€?, ?????????????????????XY?????????????????????
-..\user\common\default_config.h(31): warning:  #1-D: last line of file ends without a newline
-  #define DMA_BUFFER_LENGTH 128 // DMA????€?????????????
-..\user\infantry\config.h(24): warning:  #47-D: incompatible redefinition of macro "CHASSIS_SIZE_K"  (declared at line 27 of "..\user\common\default_config.h")
-  #define CHASSIS_SIZE_K 0.402f               // 0.385???????€?, ?????????????????????XY?????????????????????
-..\user\infantry\config.h(38): warning:  #47-D: incompatible redefinition of macro "BOARD_FRONT_IS_UP"  (declared at line 15 of "..\user\common\default_config.h")
-  #define BOARD_FRONT_IS_UP 0                     // ??????????????????
-..\user\infantry\config.h(39): warning:  #47-D: incompatible redefinition of macro "BOARD_SHORT_SIDE_IS_PARALLEL_TO_PITCH"  (declared at line 16 of "..\user\common\default_config.h")
-  #define BOARD_SHORT_SIDE_IS_PARALLEL_TO_PITCH 0 // ??????????????????
-..\user\infantry\config.h(41): warning:  #47-D: incompatible redefinition of macro "GYROSCOPE_YAW_FILTER_THRESHOLD"  (declared at line 19 of "..\user\common\default_config.h")
-  #define GYROSCOPE_YAW_FILTER_THRESHOLD 0.005f // 0.005????????????????€?
-..\driver\inc\Driver_Bridge.h(106): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\user\common\default_config.h(15): warning:  #47-D: incompatible redefinition of macro "BOARD_FRONT_IS_UP"  (declared at line 38 of "..\user\infantry\config.h")
-  #define BOARD_FRONT_IS_UP 1                     // ??????????????????
-..\user\common\default_config.h(16): warning:  #47-D: incompatible redefinition of macro "BOARD_SHORT_SIDE_IS_PARALLEL_TO_PITCH"  (declared at line 39 of "..\user\infantry\config.h")
-  #define BOARD_SHORT_SIDE_IS_PARALLEL_TO_PITCH 1 // ??????????????????
-..\user\common\default_config.h(19): warning:  #47-D: incompatible redefinition of macro "GYROSCOPE_YAW_FILTER_THRESHOLD"  (declared at line 41 of "..\user\infantry\config.h")
-  #define GYROSCOPE_YAW_FILTER_THRESHOLD 0.003f   // ????????????????€?
-..\user\common\default_config.h(27): warning:  #47-D: incompatible redefinition of macro "CHASSIS_SIZE_K"  (declared at line 24 of "..\user\infantry\config.h")
-  #define CHASSIS_SIZE_K 0.385f               // ???????€?, ?????????????????????XY?????????????????????
-..\user\common\default_config.h(31): warning:  #1-D: last line of file ends without a newline
-  #define DMA_BUFFER_LENGTH 128 // DMA????€?????????????
-..\user\infantry\config.h(24): warning:  #47-D: incompatible redefinition of macro "CHASSIS_SIZE_K"  (declared at line 27 of "..\user\common\default_config.h")
-  #define CHASSIS_SIZE_K 0.402f               // 0.385???????€?, ?????????????????????XY?????????????????????
-..\user\infantry\config.h(38): warning:  #47-D: incompatible redefinition of macro "BOARD_FRONT_IS_UP"  (declared at line 15 of "..\user\common\default_config.h")
-  #define BOARD_FRONT_IS_UP 0                     // ??????????????????
-..\user\infantry\config.h(39): warning:  #47-D: incompatible redefinition of macro "BOARD_SHORT_SIDE_IS_PARALLEL_TO_PITCH"  (declared at line 16 of "..\user\common\default_config.h")
-  #define BOARD_SHORT_SIDE_IS_PARALLEL_TO_PITCH 0 // ??????????????????
-..\user\infantry\config.h(41): warning:  #47-D: incompatible redefinition of macro "GYROSCOPE_YAW_FILTER_THRESHOLD"  (declared at line 19 of "..\user\common\default_config.h")
-  #define GYROSCOPE_YAW_FILTER_THRESHOLD 0.005f // 0.005????????????????€?
-..\driver\inc\Driver_Bridge.h(39): warning:  #144-D: a value of type "unsigned int" cannot be used to initialize an entity of type "USART_TypeDef *"
-                            {0, USART3_Tx, USART3_Rx, USART3_BASE},
-..\driver\inc\Driver_Bridge.h(39): warning:  #152-D: conversion of nonzero integer to pointer
-                            {0, USART3_Tx, USART3_Rx, USART3_BASE},
-..\driver\inc\Driver_Bridge.h(42): warning:  #144-D: a value of type "unsigned int" cannot be used to initialize an entity of type "USART_TypeDef *"
-                            {1, USART6_Tx, USART6_Rx, USART6_BASE},
-..\driver\inc\Driver_Bridge.h(42): warning:  #152-D: conversion of nonzero integer to pointer
-                            {1, USART6_Tx, USART6_Rx, USART6_BASE},
-..\driver\inc\Driver_Bridge.h(43): warning:  #144-D: a value of type "unsigned int" cannot be used to initialize an entity of type "USART_TypeDef *"
-                            {2, UART7_Tx, UART7_Rx, UART7_BASE},
-..\driver\inc\Driver_Bridge.h(43): warning:  #152-D: conversion of nonzero integer to pointer
-                            {2, UART7_Tx, UART7_Rx, UART7_BASE},
-..\driver\inc\Driver_Bridge.h(44): warning:  #144-D: a value of type "unsigned int" cannot be used to initialize an entity of type "USART_TypeDef *"
-                            {3, UART8_Tx, UART8_Rx, UART8_BASE}};
-..\driver\inc\Driver_Bridge.h(44): warning:  #152-D: conversion of nonzero integer to pointer
-                            {3, UART8_Tx, UART8_Rx, UART8_BASE}};
-..\driver\inc\Driver_Bridge.h(106): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\driver\inc\Driver_Magic.h(30): warning:  #1295-D: Deprecated declaration Clibrate_Gyroscope - give arg types
-  void Clibrate_Gyroscope();
-..\driver\inc\Driver_Magic.h(36): warning:  #1295-D: Deprecated declaration Inspect_RTOS - give arg types
-  void Inspect_RTOS();
-..\driver\inc\Driver_Fsm.h(45): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\user\infantry\tasks.c(57): warning:  #111-D: statement is unreachable
-      vTaskDelete(NULL);
-..\user\infantry\tasks.c(68): warning:  #111-D: statement is unreachable
-      vTaskDelete(NULL);
-..\user\infantry\tasks.c(158): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          PID_Calculate(&PID_Cloud_YawSpeed, PID_Cloud_YawAngle.output, yawSpeed * 1.1);
-..\user\infantry\tasks.c(160): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          PID_Calculate(&PID_Cloud_PitchSpeed, PID_Cloud_PitchAngle.output, pitchSpeed * 1.1);
-..\user\infantry\tasks.c(194): warning:  #111-D: statement is unreachable
-      vTaskDelete(NULL);
-..\user\infantry\tasks.c(78): warning:  #550-D: variable "yawAngle"  was set but never used
-      float yawAngle, yawSpeed, pitchAngle, pitchSpeed, chassisAngle;
-..\user\infantry\tasks.c(78): warning:  #550-D: variable "chassisAngle"  was set but never used
-      float yawAngle, yawSpeed, pitchAngle, pitchSpeed, chassisAngle;
-..\user\infantry\tasks.c(85): warning:  #177-D: variable "pitchAngleTargetFix"  was declared but never referenced
-      float pitchAngleTargetFix       = 0; // ????????????
-..\user\infantry\tasks.c(86): warning:  #177-D: variable "pitchAngleTargetFixStable"  was declared but never referenced
-      float pitchAngleTargetFixStable = 0; // ????????????
-..\user\infantry\tasks.c(87): warning:  #177-D: variable "yawAngleTargetPs"  was declared but never referenced
-      float yawAngleTargetPs          = 0; // ????????????
-..\user\infantry\tasks.c(88): warning:  #177-D: variable "pitchAngleTargetPs"  was declared but never referenced
-      float pitchAngleTargetPs        = 0; // ????????????
-..\user\infantry\tasks.c(288): warning:  #223-D: function "rand" declared implicitly
-                  swingAngle += rand() % 40 + 50;
-..\user\infantry\tasks.c(333): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-              vx = -remoteData.lx / 660.0f * 20.0;
-..\user\infantry\tasks.c(334): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-              vy = remoteData.ly / 660.0f * 20.0;
-..\user\infantry\tasks.c(337): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-              if (xRampProgress <= 0.5) {
-..\user\infantry\tasks.c(339): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-              } else if (xRampProgress > 0.5 && xRampProgress < 1) {
-..\user\infantry\tasks.c(343): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-              if (yRampProgress <= 0.5) {
-..\user\infantry\tasks.c(345): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-              } else if (yRampProgress > 0.5 && yRampProgress < 1) {
-..\user\infantry\tasks.c(368): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          if (vx < 0.1 && vy < 0.1 && vw < 0.3) {
-..\user\infantry\tasks.c(368): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          if (vx < 0.1 && vy < 0.1 && vw < 0.3) {
-..\user\infantry\tasks.c(368): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          if (vx < 0.1 && vy < 0.1 && vw < 0.3) {
-..\user\infantry\tasks.c(388): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          targetPower = 100.0 * (1 - WANG(60.0 - ChassisData.powerBuffer, 0.0, 40.0) / 40.0); // ?????????????????? ?
-..\user\infantry\tasks.c(388): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          targetPower = 100.0 * (1 - WANG(60.0 - ChassisData.powerBuffer, 0.0, 40.0) / 40.0); // ?????????????????? ?
-..\user\infantry\tasks.c(388): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          targetPower = 100.0 * (1 - WANG(60.0 - ChassisData.powerBuffer, 0.0, 40.0) / 40.0); // ?????????????????? ?
-..\user\infantry\tasks.c(388): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          targetPower = 100.0 * (1 - WANG(60.0 - ChassisData.powerBuffer, 0.0, 40.0) / 40.0); // ?????????????????? ?
-..\user\infantry\tasks.c(423): warning:  #111-D: statement is unreachable
-      vTaskDelete(NULL);
-..\user\infantry\tasks.c(213): warning:  #177-D: variable "lastMotorAngle"  was declared but never referenced
-      float lastMotorAngle = Motor_Yaw.angle;
-..\user\infantry\tasks.c(214): warning:  #177-D: variable "filter"  was declared but never referenced
-      float filter[6]      = {0, 0, 0, 0, 0, 0};
-..\user\infantry\tasks.c(215): warning:  #177-D: variable "filterp"  was declared but never referenced
-      int   filterp        = 0;
-..\user\infantry\tasks.c(436): warning:  #223-D: function "memcpy" declared implicitly
-          memcpy(ProtocolData.dbusData.dbusBuffer, remoteBuffer, 19);
-..\user\infantry\tasks.c(444): warning:  #223-D: function "memset" declared implicitly
-              memset(HostAutoaimData.data, 0, protocolInfo->length);
-..\user\infantry\tasks.c(455): warning:  #223-D: function "memset" declared implicitly
-              memset(HostChassisData.data, 0, protocolInfo->length);
-..\user\infantry\tasks.c(466): warning:  #111-D: statement is unreachable
-      vTaskDelete(NULL);
-..\user\infantry\tasks.c(429): warning:  #177-D: variable "lastReceiveSeq"  was declared but never referenced
-      int16_t            lastReceiveSeq = 0;
-..\user\infantry\tasks.c(607): warning:  #111-D: statement is unreachable
-      vTaskDelete(NULL);
-..\user\infantry\tasks.c(515): warning:  #177-D: variable "shootNum"  was declared but never referenced
-      int   shootNum        = 0;
-..\user\infantry\tasks.c(516): warning:  #177-D: variable "mayShootNum"  was declared but never referenced
-      int   mayShootNum     = 0;
-..\user\infantry\tasks.c(517): warning:  #177-D: variable "maxBulletSpeed"  was declared but never referenced
-      int   maxBulletSpeed  = 0;
-..\user\infantry\tasks.c(518): warning:  #177-D: variable "lastBulletSpeed"  was declared but never referenced
-      float lastBulletSpeed = 0;
-..\user\infantry\tasks.c(521): warning:  #177-D: variable "stirAngle"  was declared but never referenced
-      int   stirAngle       = 0;
-..\user\infantry\tasks.c(524): warning:  #177-D: variable "lastSeq"  was declared but never referenced
-      int16_t lastSeq = 0;
-..\user\infantry\tasks.c(651): warning:  #111-D: statement is unreachable
-      vTaskDelete(NULL);
-..\user\infantry\tasks.c(615): warning:  #177-D: variable "motorLSpeed"  was declared but never referenced
-      float motorLSpeed;
-..\user\infantry\tasks.c(616): warning:  #177-D: variable "motorRSpeed"  was declared but never referenced
-      float motorRSpeed;
-..\user\infantry\tasks.c(617): warning:  #177-D: variable "targetSpeed"  was declared but never referenced
-      float targetSpeed = 0;
-..\user\infantry\tasks.c(662): warning:  #111-D: statement is unreachable
-      vTaskDelete(NULL);
-..\user\infantry\tasks.c: 100 warnings, 0 errors
 linking...
-Program Size: Code=45294 RO-data=1650 RW-data=2120 ZI-data=86464  
+Program Size: Code=45262 RO-data=1650 RW-data=2120 ZI-data=86448  
 FromELF: creating hex file...
-".\Objects\Belief exp2.axf" - 0 Error(s), 100 Warning(s).
+".\Objects\Belief exp2.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -246,7 +51,7 @@ Package Vendor: Keil
   D:/Keil/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
