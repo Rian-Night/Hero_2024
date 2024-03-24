@@ -280,6 +280,16 @@
           <WinNumber>1</WinNumber>
           <ItemText>ProtocolData.powerHeatData.chassis_power</ItemText>
         </Ww>
+        <Ww>
+          <count>24</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>maxShootHeat</ItemText>
+        </Ww>
+        <Ww>
+          <count>25</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>StirEnabled</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
@@ -362,12 +372,17 @@
           <WinNumber>2</WinNumber>
           <ItemText>Motor_Pitch,0x0A</ItemText>
         </Ww>
+        <Ww>
+          <count>16</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>maxShootHeat</ItemText>
+        </Ww>
       </WatchWindow2>
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>0</SubType>
-          <ItemText>0x40013008</ItemText>
+          <ItemText>maxShootHeat</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>
@@ -621,7 +636,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>16</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\library\freertos\croutine.c</PathWithFileName>
@@ -633,7 +648,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>17</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\library\freertos\event_groups.c</PathWithFileName>
@@ -645,7 +660,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>18</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\library\freertos\list.c</PathWithFileName>
@@ -657,7 +672,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>19</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\library\freertos\queue.c</PathWithFileName>
@@ -669,7 +684,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>20</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\library\freertos\tasks.c</PathWithFileName>

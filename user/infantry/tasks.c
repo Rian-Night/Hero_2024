@@ -121,8 +121,8 @@ void Task_Gimbal(void *Parameters) {
         if (ABS(remoteData.rx) > 30) yawAngleTargetControl -= remoteData.rx / 660.0f * 360 * interval;
         if (ABS(remoteData.ry) > 30) pitchAngleTargetControl -= remoteData.ry / 660.0f * 360 * interval;
 			}else {
-        yawAngleTargetControl -= mouseData.x * 1.3 * 0.005; // 0.005
-        pitchAngleTargetControl += mouseData.y * 0.65 * 0.005;
+        yawAngleTargetControl -= mouseData.x * 1.3 * 0.01; // 0.005
+        pitchAngleTargetControl += mouseData.y * 0.65 * 0.01;
 			}
         MIAO(pitchAngleTargetControl, GIMBAL_PITCH_MIN, GIMBAL_PITCH_MAX);
         yawAngleTarget += yawAngleTargetControl;
@@ -296,7 +296,7 @@ void Task_Chassis(void *Parameters) {
         } else if (SwingMode == 3) {
             swingModeEnabled = 1;
             // 匀速旋转
-            swingAngle += 300 * interval; //英雄陀螺减速500
+            swingAngle += 450 * interval; //英雄陀螺减速500
         } else if (SwingMode == 4) {
             swingModeEnabled = 1; //猫猫步
             swingInterval    = 0.40;
@@ -530,7 +530,7 @@ void Task_Fire_Stir(void *Parameters) {
 
     // PID 初始化
     PID_Init(&PID_StirAngle, 10, 0, 0, 18000, 6000);  // 拨弹轮角度环
-    PID_Init(&PID_StirSpeed, 15, 0, 0.3, 20000, 1000); // 拨弹轮速度环
+    PID_Init(&PID_StirSpeed, 20, 0, 0.3, 20000, 1000); // 拨弹轮速度环
 
     // 开启激光
     // LASER_ON;
@@ -547,7 +547,7 @@ void Task_Fire_Stir(void *Parameters) {
         } */
 
         // 拨弹速度
-        stirSpeed = -350; //测试。。。。。。。。。。。。。。。。。。。。。
+        stirSpeed = -250; //测试。。。。。。。。。。。。。。。。。。。。。
 //        if (ProtocolData.gameRobotstatus.shooter_id1_42mm_cooling_rate == 20) 
 //        {
 //            stirSpeed = -110;
@@ -565,7 +565,7 @@ void Task_Fire_Stir(void *Parameters) {
         }
 
         //热量控制
-        maxShootHeat = ProtocolData.gameRobotstatus.shooter_barrel_heat_limit - ProtocolData.powerHeatData.shooter_id1_42mm_cooling_heat;
+        maxShootHeat = (float)(ProtocolData.gameRobotstatus.shooter_barrel_heat_limit - ProtocolData.powerHeatData.shooter_id1_42mm_cooling_heat);
 
         // 输入射击模式
         shootMode = shootIdle;
@@ -581,7 +581,7 @@ void Task_Fire_Stir(void *Parameters) {
         // }
         // lastSeq = Ps.autoaimData.seq;
 
-        if (maxShootHeat < 100) {  //单发热量为100
+        if (maxShootHeat < 200) {  //单发热量为100
             shootMode = shootIdle;
         }
 
