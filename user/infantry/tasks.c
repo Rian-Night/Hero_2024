@@ -526,7 +526,7 @@ void Task_Fire_Stir(void *Parameters) {
 
     // PID 初始化
     PID_Init(&PID_StirAngle, 10, 0, 0, 18000, 6000);   // 拨弹轮角度环
-    PID_Init(&PID_StirSpeed, 30, 0, 0.3, 20000, 1000); // 拨弹轮速度环
+    PID_Init(&PID_StirSpeed, 25, 0, 0.3, 20000, 1000); // 拨弹轮速度环
 
     // 开启激光
     // LASER_ON;
@@ -575,8 +575,8 @@ void Task_Fire_Stir(void *Parameters) {
         //     shootMode = shootToDeath;
         // }
         // lastSeq = Ps.autoaimData.seq;
-
-        if (maxShootHeat < 100) {
+				if(!FastShootMode) {
+        if (maxShootHeat < 100 && StirEnabled) {
             PID_Calculate(&PID_StirSpeed, 50, Motor_Stir.speed * RPM2RPS);
             Motor_Stir.input = PID_StirSpeed.output;
             shootMode        = emergencyStop;
@@ -584,6 +584,7 @@ void Task_Fire_Stir(void *Parameters) {
                 shootMode = shootIdle;
             }
         }
+			}
         // 控制拨弹轮
         if (shootMode == shootIdle) {
             // 停止
