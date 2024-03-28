@@ -9,10 +9,10 @@
 
 int main(void) {
 
-    //设置中断优先级位数
+    // 设置中断优先级位数
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
 
-    //调试相关
+    // 调试相关
     Delay_Init(180); // 初始化延时
     LED_Init();      // 初始化LED
     Beep_Init();     // 初始化蜂鸣器
@@ -27,14 +27,16 @@ int main(void) {
     Motor_Init(&Motor_RF, CHASSIS_MOTOR_REDUCTION_RATE, ENABLE, ENABLE);
 
     // 发射机构电机
-    Motor_Init(&Motor_Stir, STIR_MOTOR_REDUCTION_RATE, ENABLE, ENABLE); //拨弹
+    Motor_Init(&Motor_Stir, STIR_MOTOR_REDUCTION_RATE, ENABLE, ENABLE); // 拨弹
     Motor_Init(&Motor_FL, 1, DISABLE, ENABLE);
     Motor_Init(&Motor_FR, 1, DISABLE, ENABLE);
 
     // 云台电机
-    Motor_Init(&Motor_Yaw, GIMBAL_MOTOR_REDUCTION_RATE, ENABLE, ENABLE);   // 顺时针为正电流
-    Motor_Init(&Motor_Pitch, GIMBAL_MOTOR_REDUCTION_RATE, ENABLE, ENABLE); // 顺时针为正电流
+    Motor_Init(&Motor_Yaw, GIMBAL_MOTOR_REDUCTION_RATE, ENABLE, ENABLE);    // 顺时针为正电流
+    Motor_Init(&Motor_Pitch, GIMBAL_MOTOR_REDUCTION_RATE, ENABLE, ENABLE);  // 顺时针为正电流
     Motor_Init(&Motor_Pitch2, GIMBAL_MOTOR_REDUCTION_RATE, ENABLE, ENABLE); // 顺时针为正电流 右侧电机
+    // UI
+    UI_Init();
 
     // 遥控器数据初始化
     DBUS_Init(&remoteData, &keyboardData, &mouseData);
@@ -66,23 +68,22 @@ int main(void) {
     BSP_PWM_Init(&PWM_Magazine_Servo, 9000, 200, TIM_OCPolarity_Low);
 
     // Calibration
-        Motor_Set_Angle_Bias(&Motor_Yaw, 265.840);
-        Motor_Set_Angle_Bias(&Motor_Pitch, -145.764); //350.652 -145.764
-        Gyroscope_Set_Bias(&ImuData, 20, 22, -1);
-
+    Motor_Set_Angle_Bias(&Motor_Yaw, 265.840);
+    Motor_Set_Angle_Bias(&Motor_Pitch, -145.764); // 350.652 -145.764
+    Gyroscope_Set_Bias(&ImuData, 20, 22, -1);
 
     // 总线设置
-				Bridge_Bind(&BridgeData, CAN1_BRIDGE, 0x201, &Motor_LAJI);
-        Bridge_Bind(&BridgeData, CAN1_BRIDGE, 0x204, &Motor_LF);
-        Bridge_Bind(&BridgeData, CAN1_BRIDGE, 0x207, &Motor_LB);
-        Bridge_Bind(&BridgeData, CAN1_BRIDGE, 0x202, &Motor_RB);
-        Bridge_Bind(&BridgeData, CAN1_BRIDGE, 0x203, &Motor_RF);
-        Bridge_Bind(&BridgeData, CAN1_BRIDGE, 0x209, &Motor_Yaw);
-        Bridge_Bind(&BridgeData, CAN1_BRIDGE, 0x206, &Motor_Stir);
-        Bridge_Bind(&BridgeData, CAN2_BRIDGE, 0x203, &Motor_FL);
-        Bridge_Bind(&BridgeData, CAN2_BRIDGE, 0x204, &Motor_FR);
-        Bridge_Bind(&BridgeData, CAN2_BRIDGE, 0x207, &Motor_Pitch);
-        Bridge_Bind(&BridgeData, CAN2_BRIDGE, 0x206, &Motor_Pitch2);        
+    Bridge_Bind(&BridgeData, CAN1_BRIDGE, 0x201, &Motor_LAJI);
+    Bridge_Bind(&BridgeData, CAN1_BRIDGE, 0x204, &Motor_LF);
+    Bridge_Bind(&BridgeData, CAN1_BRIDGE, 0x207, &Motor_LB);
+    Bridge_Bind(&BridgeData, CAN1_BRIDGE, 0x202, &Motor_RB);
+    Bridge_Bind(&BridgeData, CAN1_BRIDGE, 0x203, &Motor_RF);
+    Bridge_Bind(&BridgeData, CAN1_BRIDGE, 0x209, &Motor_Yaw);
+    Bridge_Bind(&BridgeData, CAN1_BRIDGE, 0x206, &Motor_Stir);
+    Bridge_Bind(&BridgeData, CAN2_BRIDGE, 0x203, &Motor_FL);
+    Bridge_Bind(&BridgeData, CAN2_BRIDGE, 0x204, &Motor_FR);
+    Bridge_Bind(&BridgeData, CAN2_BRIDGE, 0x207, &Motor_Pitch);
+    Bridge_Bind(&BridgeData, CAN2_BRIDGE, 0x206, &Motor_Pitch2);
     // 总线设置
     Bridge_Bind(&BridgeData, USART_BRIDGE, 7, &Node_Host);
     Bridge_Bind(&BridgeData, USART_BRIDGE, 8, &Node_Judge);
@@ -98,7 +99,7 @@ int main(void) {
     while (!remoteData.state) {
     }
     xTaskCreate(Task_Blink, "Task_Blink", 400, NULL, 3, NULL);
-    //模式切换任务
+    // 模式切换任务
     xTaskCreate(Task_Control, "Task_Control", 400, NULL, 9, NULL);
 
     // Can发送任务
@@ -114,15 +115,18 @@ int main(void) {
     xTaskCreate(Task_Host, "Task_Host", 500, NULL, 6, NULL);
 
     // 定义协议发送频率
-    Bridge_Send_Protocol(&Node_Host, 0x120, 1);  // 心跳包
-    Bridge_Send_Protocol(&Node_Host, 0x403, 20); // 陀螺仪
-    Bridge_Send_Protocol(&Node_Host, 0x404, 10); // 遥控器
-    Bridge_Send_Protocol(&Node_Judge, 0XF101, 10); // 遥控器
+    Bridge_Send_Protocol(&Node_Host, 0x120, 1);    // 心跳包 no need
+    Bridge_Send_Protocol(&Node_Host, 0x403, 20);   // 陀螺仪
+    Bridge_Send_Protocol(&Node_Host, 0x404, 10);   // 遥控器
+    Bridge_Send_Protocol(&Node_Judge, 0XF101, 10); // 此处创建UI循环发送任务
 
-    //启动调度,开始执行任务
+    // 创建UI更新打包任务
+    xTaskCreate(Task_UI, "Task_UI", 500, NULL, 6, NULL);
+    
+    // 启动调度,开始执行任务
     vTaskStartScheduler();
-
-    //系统启动失败:定时器任务或者空闲任务的heap空间不足
+		
+    // 系统启动失败:定时器任务或者空闲任务的heap空间不足
     while (1) {
     }
 }

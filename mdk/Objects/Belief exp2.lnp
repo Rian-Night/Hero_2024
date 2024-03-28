@@ -44,6 +44,7 @@
 ".\objects\driver_protocol.o"
 ".\objects\driver_fsm.o"
 ".\objects\driver_bridge.o"
+".\objects\driver_ui.o"
 ".\objects\system_stm32f4xx.o"
 ".\objects\interrupt.o"
 ".\objects\main.o"

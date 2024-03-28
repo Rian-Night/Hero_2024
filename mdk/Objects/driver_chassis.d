@@ -80,4 +80,7 @@
 .\objects\driver_chassis.o: ..\user\common\default_config.h
 .\objects\driver_chassis.o: ..\driver\inc\Driver_Magic.h
 .\objects\driver_chassis.o: ..\driver\inc\Driver_Fsm.h
+.\objects\driver_chassis.o: ..\driver\inc\Driver_UI.h
+.\objects\driver_chassis.o: ..\user\infantry\config.h
+.\objects\driver_chassis.o: ..\user\common\default_config.h
 .\objects\driver_chassis.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

@@ -25,6 +25,7 @@
 #include "Driver_Bridge.h"
 #include "Driver_Magic.h"
 #include "Driver_Fsm.h"
+#include "Driver_UI.h"
 
 #ifdef __HANDLE_GLOBALS
 #define __HANDLE_EXT
@@ -42,7 +43,7 @@ __HANDLE_EXT volatile uint32_t ulHighFrequencyTimerTicks;
 __HANDLE_EXT uint8_t ControlMode;
 __HANDLE_EXT uint8_t FrictEnabled, StirEnabled, StirReloadEnabled, MagzineOpened, FastShootMode;
 __HANDLE_EXT uint8_t PsAimEnabled, PsShootEnabled;
-__HANDLE_EXT uint8_t SwingMode, SafetyMode, PigeonMode,FastmoveMode;
+__HANDLE_EXT uint8_t SwingMode, SafetyMode, PigeonMode, FastmoveMode;
 
 // 上位机
 __HANDLE_EXT uint8_t        FacingEnemyMode;
@@ -82,7 +83,7 @@ __HANDLE_EXT Node_Type         Node_Judge, Node_Host, Node_Board;
 // 弹舱盖舵机
 __HANDLE_EXT PWM_Type PWM_Magazine_Servo;
 
-//发射机构
+// 发射机构
 __HANDLE_EXT Motor_Type Motor_Stir, Motor_FL, Motor_FR;                     // 左/右 摩擦轮 拨弹轮 电机
 __HANDLE_EXT PID_Type   PID_StirSpeed, PID_StirAngle, PID_FireL, PID_FireR; // 拨弹轮 速度/角度 PID
 
@@ -91,6 +92,14 @@ __HANDLE_EXT PWM_Type PWM_Test;
 
 // CAN
 __HANDLE_EXT Bridge_Type BridgeData;
+
+// UI
+__HANDLE_EXT interaction_figure_1_t        interactionFigure_1_0;
+__HANDLE_EXT interaction_figure_7_t        interactionFigure_7_0;
+__HANDLE_EXT ext_client_custom_character_t extClientCustomChar_0;
+
+// UI调用量
+__HANDLE_EXT uint32_t targetSpeed;
 /**
  * @brief 初始化结构体
  * @note 该函数将在所有硬件及任务初始化之前执行

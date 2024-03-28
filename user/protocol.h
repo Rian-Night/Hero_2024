@@ -1,5 +1,6 @@
 #ifndef __PROTOCOL_H
 #define __PROTOCOL_H
+#include "stdint.h"
 
 /**
  * @file    protocol.h
@@ -131,18 +132,20 @@ typedef union {
     struct {
         uint8_t level;
         uint8_t foul_robot_id;
+        uint8_t count;
     };
     struct {
-        uint8_t data[2];
+        uint8_t data[3];
     };
 } referee_warning_t;
 
 typedef union {
     struct {
-        uint8_t dart_remaining_time;
+        uint8_t  dart_remaining_time;
+        uint16_t dart_info;
     };
     struct {
-        uint8_t data[1];
+        uint8_t data[3];
     };
 } dart_remaining_time_t;
 
@@ -160,7 +163,7 @@ typedef union {
         uint8_t  mains_power_shooter_output : 1;
     };
     struct {
-        uint8_t data[15];
+        uint8_t data[13];
     };
 } game_robot_status_t;
 
@@ -183,29 +186,33 @@ typedef union {
     struct {
         float x;
         float y;
-        float z;
-        float yaw;
+        float angle
     };
     struct {
-        uint8_t data[16];
+        uint8_t data[12];
     };
 } game_robot_pos_t;
 
 typedef union {
     struct {
-        uint8_t power_rune_buff;
+        uint8_t  recovery_buff;
+        uint8_t  cooling_buff;
+        uint8_t  defence_buff;
+        uint8_t  vulnerablity_buff;
+        uint16_t attack_buff;
     };
     struct {
-        uint8_t data[1];
+        uint8_t data[6];
     };
 } buff_info_t;
 
 typedef union {
     struct {
-        uint8_t attack_time;
+        uint8_t airforce_status;
+        uint8_t time_remain;
     };
     struct {
-        uint8_t data[1];
+        uint8_t data[2];
     };
 } aerial_robot_energy_t;
 
@@ -254,19 +261,64 @@ typedef union {
 typedef union {
     struct {
         uint8_t  dart_launch_opening_status;
-        uint8_t  dart_attack_target;
+        uint8_t  reversed;
         uint16_t target_change_time;
-        uint8_t  first_dart_speed;
-        uint8_t  second_dart_speed;
-        uint8_t  third_dart_speed;
-        uint8_t  fourth_dart_speed;
-        uint16_t last_dart_launch_time;
         uint16_t operate_launch_cmd_time;
     };
     struct {
-        uint8_t data[12];
+        uint8_t data[6];
     };
 } dart_client_cmd_t;
+
+typedef union {
+    struct {
+        float hero_x;
+        float hero_y;
+        float engineer_x;
+        float engineer_y;
+        float standard_3_x;
+        float standard_3_y;
+        float standard_4_x;
+        float standard_4_y;
+        float standard_5_x;
+        float standard_5_y;
+    };
+    struct {
+        uint8_t data[40];
+    };
+} ground_robot_position_t;
+
+typedef union {
+    struct {
+        uint8_t mark_hero_progress;
+        uint8_t mark_engineer_progress;
+        uint8_t mark_standard_3_progress;
+        uint8_t mark_standard_4_progress;
+        uint8_t mark_standard_5_progress;
+        uint8_t mark_sentry_progress;
+    };
+    struct {
+        uint8_t data[6];
+    };
+} radar_mark_data_t;
+
+typedef union {
+    struct {
+        uint32_t sentry_info;
+    };
+    struct {
+        uint8_t data[4];
+    };
+} sentry_info_t;
+
+typedef union {
+    struct {
+        uint8_t radar_info;
+    };
+    struct {
+        uint8_t data[1];
+    };
+} radar_info_t;
 
 typedef union {
     struct {
@@ -438,23 +490,23 @@ typedef union {
 } board_interactive_data_t;
 
 typedef union {
-		struct {
-				uint8_t graphic_name[3];
-		};
-		struct {
-uint32_t operate_type:3;
-uint32_t graphic_type:3;
-uint32_t layer:4;
-uint32_t color:4;
-uint32_t start_angle:9;
-uint32_t end_angle:9;
-uint32_t width:10;
-uint32_t start_x:11;
-uint32_t start_y:11;
-uint32_t radius:10;
-uint32_t end_x:11;
-uint32_t end_y:11;
-		};
+    struct {
+        uint8_t graphic_name[3];
+    };
+    struct {
+        uint32_t operate_type : 3;
+        uint32_t graphic_type : 3;
+        uint32_t layer : 4;
+        uint32_t color : 4;
+        uint32_t start_angle : 9;
+        uint32_t end_angle : 9;
+        uint32_t width : 10;
+        uint32_t start_x : 11;
+        uint32_t start_y : 11;
+        uint32_t radius : 10;
+        uint32_t end_x : 11;
+        uint32_t end_y : 11;
+    };
 } graphic_data_struct_t;
 
 /**********************************************************************
@@ -463,10 +515,11 @@ uint32_t end_y:11;
 
 #define PROTOCOL_INFO_LIST                                                                                                                                     \
     {                                                                                                                                                          \
-        {0X0001, 11, 1}, {0X0002, 1, 1}, {0X0003, 32, 1}, {0X0004, 3, 1}, {0X0101, 4, 1}, {0X0102, 4, 1}, {0X0104, 2, 1}, {0X0105, 1, 1}, {0X0201, 15, 1},     \
-            {0X0202, 16, 1}, {0X0203, 16, 1}, {0X0204, 1, 1}, {0X0205, 1, 1}, {0X0206, 1, 1}, {0X0207, 7, 1}, {0X0208, 6, 1}, {0X0209, 4, 1}, {0X020A, 12, 1}, \
-            {0XF100, 8, 0}, {0XF101, 21, 0}, {0XF102, 36, 0}, {0XF103, 81, 0}, {0XF110, 51, 0}, {0XF104, 111, 0}, {0X1024, 32, 0}, {0X6666, 24, 0},            \
-            {0X0120, 0, 1}, {0X0401, 9, 1}, {0X0402, 12, 1}, {0X0403, 12, 0}, {0X0404, 18, 0}, {0XF301, 22, 1}, {0X0501, 16, 1}, {                             \
+        {0X0001, 11, 1}, {0X0002, 1, 1}, {0X0003, 32, 1}, {0X0101, 4, 1}, {0X0102, 4, 1}, {0X0104, 3, 1}, {0X0105, 3, 1}, {0X0201, 13, 1}, {0X0202, 16, 1},    \
+            {0X0203, 16, 1}, {0X0204, 6, 1}, {0X0205, 2, 1}, {0X0206, 1, 1}, {0X0207, 7, 1}, {0X0208, 6, 1}, {0X0209, 4, 1}, {0X020A, 6, 1}, {0X020B, 40, 1},  \
+            {0X020C, 6, 1}, {0X020D, 4, 1}, {0X020E, 1, 1}, {0XF100, 8, 0}, {0XF101, 21, 0}, {0XF102, 36, 0}, {0XF103, 81, 0}, {0XF110, 51, 0},                \
+            {0XF104, 111, 0}, {0X1024, 32, 0}, {0X6666, 24, 0}, {0X0120, 0, 1}, {0X0401, 9, 1}, {0X0402, 12, 1}, {0X0403, 12, 0}, {0X0404, 18, 0},             \
+            {0XF301, 22, 1}, {0X0501, 16, 1}, {                                                                                                                \
             0X0502, 16, 1                                                                                                                                      \
         }                                                                                                                                                      \
     }
@@ -477,11 +530,11 @@ uint32_t end_y:11;
 
 typedef union {
     struct {
-        game_status_t                  gameStatus;                  // 0X0001 比赛状态数据
-        game_result_t                  gameResult;                  // 0X0002 比赛结果的数据
-        game_robot_HP_t                healthPoint;                 // 0X0003 机器人血量数据
-        dart_status_t                  dartStatus;                  // 0X0004 飞镖发射状态
-        event_data_t                   eventData;                   // 0X0101 场地事件数据
+        game_status_t   gameStatus;               // 0X0001 比赛状态数据
+        game_result_t   gameResult;               // 0X0002 比赛结果的数据
+        game_robot_HP_t healthPoint;              // 0X0003 机器人血量数据
+                                                  //        dart_status_t                  dartStatus;                  // 0X0004 飞镖发射状态
+        event_data_t                   eventData; // 0X0101 场地事件数据
         supply_projectile_action_t     supplyProjectileaction;      // 0X0102 补给站动作标识
         referee_warning_t              refereeWarning;              // 0X0104 裁判警告信息
         dart_remaining_time_t          dartRemainingtime;           // 0X0105 飞镖发射口倒计
@@ -495,6 +548,10 @@ typedef union {
         bullet_remaining_t             bulletRemaining;             // 0X0208 子弹剩余发射数
         rfid_status_t                  rfidStatus;                  // 0X0209 机器人RFID状态
         dart_client_cmd_t              dartClientCmds;              // 0X020A 飞镖机器人客户端指令数据
+        ground_robot_position_t        groundRobotPosition;         // 0X020B 地面机器人位置
+        radar_mark_data_t              radarMarkData;               // 0X020C 雷达标记进度数据
+        sentry_info_t                  sentryInfo;                  // 0X020D 哨兵自主决策信息同步
+        radar_info_t                   radarInfo;                   // 0X020E	雷达自主决策信息同步
         client_custom_graphic_delete_t clientCustomGraphicDelete;   // 0XF100 客户端删除图形
         client_custom_graphic_single_t client_custom_graphicSingle; // 0XF101 客户端绘制一个图形
         client_custom_graphic_double_t clientCustomGraphicDouble;   // 0XF102 客户端绘制两个图形
@@ -513,7 +570,7 @@ typedef union {
         board_interactive_data_t       boardBeta;                   // 0X0502 主控板间通信
     };
     struct {
-        uint8_t data[606];
+        uint8_t data[655];
     };
 } ProtocolData_Type;
 

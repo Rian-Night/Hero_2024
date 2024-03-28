@@ -77,3 +77,6 @@
 .\objects\interrupt.o: ..\user\common\default_config.h
 .\objects\interrupt.o: ..\driver\inc\Driver_Magic.h
 .\objects\interrupt.o: ..\driver\inc\Driver_Fsm.h
+.\objects\interrupt.o: ..\driver\inc\Driver_UI.h
+.\objects\interrupt.o: ..\user\infantry\config.h
+.\objects\interrupt.o: ..\user\common\default_config.h
